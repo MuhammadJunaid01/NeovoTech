@@ -2,8 +2,10 @@ import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import tw from '../../tailwind';
 import {MessageIcon} from '../assets/icons';
+import HeroImage from '../assets/images/banner.jpg';
 import {
   FlexView,
+  HeroBanner,
   NumericScrollableCalendarMonth,
   ThemedText,
   UniversalSearchBar,
@@ -57,8 +59,8 @@ const HomeScreen = React.memo(() => {
     }
   }, [month, state.selectedDate.date]);
   return (
-    <View style={tw` flex-1 bg-white p-3 gap-y-11`}>
-      <FlexView style={tw` mt-7 justify-between    items-center`}>
+    <View style={tw` flex-1 bg-white p-3 gap-y-8`}>
+      <FlexView style={tw` mt-5 justify-between    items-center`}>
         <View style={tw` flex-1`}>
           <ThemedText
             variant="h2"
@@ -93,6 +95,7 @@ const HomeScreen = React.memo(() => {
         selectedDate={state.selectedDate}
         onSelectDate={onPressDateSelect}
       />
+      <HeroBanner height={250} image={HeroImage} />
     </View>
   );
 });
