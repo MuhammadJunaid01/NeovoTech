@@ -1,36 +1,64 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {ActivitiesScreen, HomeScreen, ProfileScreen} from '../screens';
+import {CalendarIcon, HomeIcon, NotificationBellIcon} from '../assets/icons';
+import {BottomTabsParamList} from '../interfaces';
+import {
+  ActivitiesScreen,
+  HomeScreen,
+  NotificationsScreen,
+  ProfileScreen,
+} from '../screens';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabsParamList>();
 
 const BottomTabsNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={() => ({
         headerShown: false,
-        tabBarIcon: ({color, size}) => {
-          let iconName: string = '';
-
-          if (route.name === 'Home') {
-            iconName = 'home-outline';
-          } else if (route.name === 'Activities') {
-            iconName = 'list-outline';
-          } else if (route.name === 'Profile') {
-            iconName = 'person-outline';
-          }
-
-          return <Icon name={iconName} size={size} color={color} />;
+        tabBarActiveTintColor: '#0C4650',
+        tabBarStyle: {paddingBottom: 5, height: 66, paddingTop: 5},
+        tabBarLabelStyle: {
+          fontSize: 16,
         },
-        tabBarActiveTintColor: '#2c3e50',
-        tabBarInactiveTintColor: '#95a5a6',
-        tabBarStyle: {backgroundColor: '#ecf0f1', paddingBottom: 5},
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Activities" component={ActivitiesScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <HomeIcon size={size + 11} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Activities"
+        component={ActivitiesScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <CalendarIcon size={size + 11} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={NotificationsScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <NotificationBellIcon size={size + 11} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Menu"
+        component={}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <NotificationBellIcon size={size + 11} color={color} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };

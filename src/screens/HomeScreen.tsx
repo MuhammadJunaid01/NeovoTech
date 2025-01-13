@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import tw from '../../tailwind';
-import {HomeIcon, MessageIcon} from '../assets/icons';
+import {MessageIcon} from '../assets/icons';
 import HeroImage from '../assets/images/banner.jpg';
 import {
   FlexView,
@@ -59,44 +59,47 @@ const HomeScreen = React.memo(() => {
     }
   }, [month, state.selectedDate.date]);
   return (
-    <View style={tw` flex-1 bg-white p-3 gap-y-8`}>
-      <FlexView style={tw` mt-5 justify-between    items-center`}>
-        <View style={tw` flex-1`}>
-          <ThemedText
-            variant="h2"
-            color={'text-gray-600'}
-            style={tw` tracking-[2px] font-normal`}>
-            Hello,
-          </ThemedText>
-          <ThemedText
-            variant="h2"
-            color={'text-secondary'}
-            style={tw`tracking-[2px] `}>
-            Good Morning
-          </ThemedText>
+    <View style={tw` flex-1 bg-white p-3 `}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={tw` flex-grow gap-y-8`}>
+        <FlexView style={tw` mt-5 justify-between    items-center`}>
+          <View style={tw` flex-1`}>
+            <ThemedText
+              variant="h2"
+              color={'text-gray-600'}
+              style={tw` tracking-[2px] font-normal`}>
+              Hello,
+            </ThemedText>
+            <ThemedText
+              variant="h2"
+              color={'text-secondary'}
+              style={tw`tracking-[2px] `}>
+              Good Morning
+            </ThemedText>
+          </View>
+          <View style={tw` flex-1 items-end`}>
+            <TouchableOpacity style={tw` min-w-12 items-center`}>
+              <MessageIcon color="#4b5563" size={30} />
+            </TouchableOpacity>
+          </View>
+        </FlexView>
+        <View style={tw` mt-0`}>
+          <UniversalSearchBar
+            placeholderTextColor={'#32636B'}
+            placeholder="Search center"
+          />
         </View>
-        <View style={tw` flex-1 items-end`}>
-          <TouchableOpacity style={tw` min-w-12 items-center`}>
-            <MessageIcon color="#4b5563" size={30} />
-          </TouchableOpacity>
-        </View>
-      </FlexView>
-      <View style={tw` mt-0`}>
-        <UniversalSearchBar
-          placeholderTextColor={'#32636B'}
-          placeholder="Search center"
+        <NumericScrollableCalendarMonth
+          showsHorizontalScrollIndicator={false}
+          horizontal
+          data={month}
+          ref={scrollViewRef}
+          selectedDate={state.selectedDate}
+          onSelectDate={onPressDateSelect}
         />
-      </View>
-      <NumericScrollableCalendarMonth
-        showsHorizontalScrollIndicator={false}
-        horizontal
-        data={month}
-        ref={scrollViewRef}
-        selectedDate={state.selectedDate}
-        onSelectDate={onPressDateSelect}
-      />
-      <HeroBanner height={250} image={HeroImage} />
-      <HomeIcon size={50} color="red" />
+        <HeroBanner height={250} image={HeroImage} />
+      </ScrollView>
     </View>
   );
 });
