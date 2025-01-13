@@ -17,7 +17,7 @@ const UniversalSearchBar: React.FC<IProps> = React.memo(
     return (
       <View
         style={[
-          tw`flex-row h-16 px-5 gap-x-2 rounded-full  w-full items-center justify-between bg-[#F3F3F4]`,
+          tw`flex-row h-14 px-5 gap-x-2 rounded-full  w-full items-center justify-between bg-[#F3F3F4]`,
           containerStyle,
         ]}>
         <TouchableOpacity style={tw` h-full w-12 items-center justify-center`}>
