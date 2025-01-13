@@ -1,11 +1,17 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {CalendarIcon, HomeIcon, NotificationBellIcon} from '../assets/icons';
+import {
+  CalendarIcon,
+  HomeIcon,
+  MenuIcon,
+  NotificationBellIcon,
+} from '../assets/icons';
 import {BottomTabsParamList} from '../interfaces';
 import {
   ActivitiesScreen,
   HomeScreen,
+  MenuScreen,
   NotificationsScreen,
   ProfileScreen,
 } from '../screens';
@@ -52,10 +58,10 @@ const BottomTabsNavigator = () => {
       />
       <Tab.Screen
         name="Menu"
-        component={}
+        component={MenuScreen}
         options={{
           tabBarIcon: ({color, size}) => (
-            <NotificationBellIcon size={size + 11} color={color} />
+            <MenuIcon size={size + 11} color={color} />
           ),
         }}
       />
