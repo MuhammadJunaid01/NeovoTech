@@ -1,4 +1,4 @@
-import ActivitiesNavigator from './ActivitiesNavigator';
+import BottomTabsNavigator from './BottomTabsNavigator';
 import RootNavigator from './RootNavigator';
 
-export {ActivitiesNavigator, RootNavigator};
+export {BottomTabsNavigator, RootNavigator};

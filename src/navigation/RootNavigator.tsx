@@ -1,27 +1,41 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+/* eslint-disable react/no-unstable-nested-components */
+import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import ActivitiesNavigator from './ActivitiesNavigator';
-import HomeNavigator from './HomeNavigator';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import DetailsScreen from '../screens/DetailsScreen';
+import BottomTabsNavigator from './BottomTabsNavigator';
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const RootNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}>
-      <Tab.Screen
-        name="HomeTab"
-        component={HomeNavigator}
-        options={{title: 'Home'}}
+    <Stack.Navigator>
+      {/* Bottom Tabs */}
+      <Stack.Screen
+        name="Main"
+        component={BottomTabsNavigator}
+        options={{headerShown: false}}
       />
-      <Tab.Screen
-        name="ActivitiesTab"
-        component={ActivitiesNavigator}
-        options={{title: 'Activities'}}
+
+      {/* Stack Screen with Icons */}
+      <Stack.Screen
+        name="Details"
+        component={DetailsScreen}
+        options={{
+          headerTitle: 'Details',
+          headerStyle: {backgroundColor: '#3498db'},
+          headerTintColor: '#fff',
+          headerRight: () => (
+            <Icon
+              name="info-outline"
+              size={24}
+              color="white"
+              style={{marginRight: 15}}
+            />
+          ),
+        }}
       />
-    </Tab.Navigator>
+    </Stack.Navigator>
   );
 };
 

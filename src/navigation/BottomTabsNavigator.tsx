@@ -2,9 +2,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ActivitiesScreen from '../screens/ActivitiesScreen';
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import {ActivitiesScreen, HomeScreen, ProfileScreen} from '../screens';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +12,7 @@ const BottomTabsNavigator = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarIcon: ({color, size}) => {
-          let iconName: string;
+          let iconName: string = '';
 
           if (route.name === 'Home') {
             iconName = 'home-outline';
