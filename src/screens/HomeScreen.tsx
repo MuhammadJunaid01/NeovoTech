@@ -29,7 +29,10 @@ const HomeScreen = React.memo(() => {
         </View>
       </FlexView>
       <View style={tw` mt-5`}>
-        <UniversalSearchBar />
+        <UniversalSearchBar
+          placeholderTextColor={'#32636B'}
+          placeholder="Search center"
+        />
       </View>
     </View>
   );
