@@ -1,8 +1,8 @@
-import {ICurrentMonthDates} from '../interfaces';
+import {ICurrentMonthDate} from '../interfaces';
 
-export const getCalendarMonth = (): ICurrentMonthDates[] => {
+export const getCalendarMonth = (): ICurrentMonthDate[] => {
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const result: ICurrentMonthDates[] = [];
+  const result: ICurrentMonthDate[] = [];
   const now = new Date();
   const year = now.getFullYear();
   const month = now.getMonth(); // Current month (0-indexed)
