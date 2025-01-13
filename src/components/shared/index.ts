@@ -1,3 +1,5 @@
+import FlexView from './FlexView';
 import ThemedText from './ThemedText';
+import UniversalSearchBar from './UniversalSearchBar';
 
-export {ThemedText};
+export {FlexView, ThemedText, UniversalSearchBar};
