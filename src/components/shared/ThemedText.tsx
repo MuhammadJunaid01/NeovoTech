@@ -16,6 +16,9 @@ const ThemedText: React.FC<IProps> = ({
   style,
   ...rest
 }) => {
+  /* The `textStyle` constant in the provided code snippet is a memoized callback function created using
+ the `useCallback` hook in React. This function is responsible for determining the text styles based
+ on the `variant` prop passed to the `ThemedText` component. */
   const textStyle = useCallback(() => {
     let styleIn = {};
     switch (variant) {
@@ -61,7 +64,6 @@ const ThemedText: React.FC<IProps> = ({
         break;
     }
 
-    // Apply dynamic text color here
     return {
       ...styleIn,
       ...(typeof style === 'object' ? style : {}),
