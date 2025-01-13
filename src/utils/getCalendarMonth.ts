@@ -28,3 +28,9 @@ export const getToDay = (): ICurrentMonthDate => {
     day: daysOfWeek[today.getDay()], // Get the day abbreviation
   };
 };
+export const getCurrentHour = (): string => {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, '0'); // Ensures 2-digit hour
+  const minutes = '00'; // Fixed minutes as "00"
+  return `${hours}:${minutes}`;
+};
