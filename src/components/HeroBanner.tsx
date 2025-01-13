@@ -72,7 +72,7 @@ const HeroBanner: React.FC<IProps> = React.memo(
                 blurAmount={10}
                 //   reducedTransparencyFallbackColor=""
               />
-              <StarIcon size={30} color="#A9D101" />
+              <StarIcon size={33} color="#A9D101" />
             </View>
           </View>
         </View>

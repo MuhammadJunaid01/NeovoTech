@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {ScrollView, TouchableOpacity, View} from 'react-native';
 import tw from '../../tailwind';
-import {MessageIcon} from '../assets/icons';
+import {HomeIcon, MessageIcon} from '../assets/icons';
 import HeroImage from '../assets/images/banner.jpg';
 import {
   FlexView,
@@ -96,6 +96,7 @@ const HomeScreen = React.memo(() => {
         onSelectDate={onPressDateSelect}
       />
       <HeroBanner height={250} image={HeroImage} />
+      <HomeIcon size={50} color="red" />
     </View>
   );
 });
