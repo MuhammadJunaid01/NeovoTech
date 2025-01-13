@@ -19,3 +19,12 @@ export const getCalendarMonth = (): ICurrentMonthDate[] => {
 
   return result;
 };
+export const getToDay = (): ICurrentMonthDate => {
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const today = new Date();
+
+  return {
+    date: today.getDate().toString().padStart(2, '0'), // Ensure 2-digit format
+    day: daysOfWeek[today.getDay()], // Get the day abbreviation
+  };
+};

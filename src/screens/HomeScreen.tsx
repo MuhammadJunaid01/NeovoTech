@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import tw from '../../tailwind';
 import {MessageIcon} from '../assets/icons';
-import {FlexView, ThemedText, UniversalSearchBar} from '../components';
+import {
+  FlexView,
+  NumericScrollableCalendarMonth,
+  ThemedText,
+  UniversalSearchBar,
+} from '../components';
 import {getCalendarMonth} from '../utils';
 
 const HomeScreen = React.memo(() => {
-  console.log('getCalendarMonth', getCalendarMonth());
+  const month = useMemo(() => getCalendarMonth(), []);
   return (
-    <View style={tw` flex-1 bg-white p-3`}>
+    <View style={tw` flex-1 bg-white p-3 gap-y-11`}>
       <FlexView style={tw` mt-7 justify-between    items-center`}>
         <View style={tw` flex-1`}>
           <ThemedText
@@ -30,12 +35,17 @@ const HomeScreen = React.memo(() => {
           </TouchableOpacity>
         </View>
       </FlexView>
-      <View style={tw` mt-11`}>
+      <View style={tw` mt-0`}>
         <UniversalSearchBar
           placeholderTextColor={'#32636B'}
           placeholder="Search center"
         />
       </View>
+      <NumericScrollableCalendarMonth
+        showsHorizontalScrollIndicator={false}
+        horizontal
+        data={month}
+      />
     </View>
   );
 });
