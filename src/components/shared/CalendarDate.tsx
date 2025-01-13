@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {StyleProp, View, ViewStyle} from 'react-native';
+import {StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
 import tw from '../../../tailwind';
 import {COLORS} from '../../config';
 import {ICurrentMonthDate} from '../../interfaces';
@@ -8,10 +8,11 @@ import ThemedText from './ThemedText';
 interface CalendarDateProps extends ICurrentMonthDate {
   style?: StyleProp<ViewStyle>;
   selectedDate?: ICurrentMonthDate;
+  onPress?: () => void;
 }
 
 const CalendarDate: React.FC<CalendarDateProps> = React.memo(
-  ({date, day, style, selectedDate}) => {
+  ({date, day, style, selectedDate, onPress}) => {
     /* The `isSelected` constant in the `CalendarDate` component is using the `useMemo` hook to memoize
   the result of the comparison between the `selectedDate` date and the current `date` being
   rendered. */
@@ -41,14 +42,14 @@ const CalendarDate: React.FC<CalendarDateProps> = React.memo(
     );
 
     return (
-      <View style={containerStyle}>
+      <TouchableOpacity onPress={onPress} style={containerStyle}>
         <ThemedText variant="h2" color={textColor}>
           {date}
         </ThemedText>
         <ThemedText variant="h2" color={textColor}>
           {day.toUpperCase()}
         </ThemedText>
-      </View>
+      </TouchableOpacity>
     );
   },
 );
