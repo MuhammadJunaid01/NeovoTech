@@ -13,7 +13,6 @@ import {
   HomeScreen,
   MenuScreen,
   NotificationsScreen,
-  ProfileScreen,
 } from '../screens';
 
 const Tab = createBottomTabNavigator<BottomTabsParamList>();
