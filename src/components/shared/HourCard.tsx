@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import tw from '../../../tailwind';
+import {COLORS} from '../../config';
 import ThemedText from './ThemedText';
 
 interface HourCardProps {
@@ -9,21 +10,18 @@ interface HourCardProps {
   onPress: (hour: string) => void;
 }
 
-// const CARD_WIDTH = 80;
-// const CARD_MARGIN = 8;
-
 const HourCard: React.FC<HourCardProps> = React.memo(
   ({hour, isActive, onPress}) => {
     return (
       <TouchableOpacity
         onPress={() => onPress(hour)}
-        style={tw`px-4 py-3 rounded-lg mx-1 ${
-          isActive ? 'bg-[#ACD20B]' : 'bg-gray-100'
+        style={tw` border w-[70px] h-12 rounded-3xl  items-center justify-center mx-1.4 ${
+          isActive ? `  border-[${COLORS.primary}]` : 'border-gray-200'
         }`}>
         <ThemedText
-          variant="h3"
-          color={isActive ? 'text-white' : 'text-gray-600'}
-          style={tw`text-center font-medium `}>
+          variant="h4"
+          color={isActive ? `text-[${COLORS.primary}]` : 'text-gray-600'}
+          style={tw`text-center `}>
           {hour}
         </ThemedText>
       </TouchableOpacity>

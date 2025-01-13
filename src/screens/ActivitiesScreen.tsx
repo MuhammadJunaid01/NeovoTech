@@ -4,6 +4,7 @@ import {ActivityIndicator, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import tw from '../../tailwind';
 import {TodoList} from '../components';
+import {COLORS} from '../config';
 import {useTodos} from '../hooks';
 import {BottomTabsParamList} from '../interfaces';
 type Props = StackScreenProps<BottomTabsParamList, 'Activities'>;
@@ -14,8 +15,8 @@ const ActivitiesScreen: React.FC<Props> = React.memo(({navigation}) => {
 
   if (isLoading) {
     return (
-      <View style={tw`flex-1 justify-center items-center`}>
-        <ActivityIndicator size="large" color="#0000ff" />
+      <View style={tw`flex-1 justify-center items-center bg-white`}>
+        <ActivityIndicator size="large" color={COLORS.primary} />
         <Text style={tw`text-lg text-gray-500 mt-2`}>Loading...</Text>
       </View>
     );
