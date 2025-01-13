@@ -5,14 +5,15 @@ import {
   ImageProps,
   ImageStyle,
   StyleProp,
-  Text,
   View,
   ViewStyle,
 } from 'react-native';
 import tw from '../../tailwind';
+import {StarIcon} from '../assets/icons';
+import {ThemedText} from './shared';
 
 interface IProps {
-  image?: ImageProps;
+  image?: ImageProps['source'];
   imageStyle?: StyleProp<ImageStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   height?: number;
@@ -21,29 +22,58 @@ interface IProps {
 const HeroBanner: React.FC<IProps> = React.memo(
   ({image, imageStyle, containerStyle, height = 220}) => {
     return (
-      <View style={[tw`h-[${height}px] w-full`, containerStyle]}>
+      <View
+        style={[
+          tw`relative w-full overflow-hidden rounded-lg`,
+          {height},
+          containerStyle,
+        ]}>
+        {/* Background Image */}
         <Image
           source={image}
-          style={[tw`flex-1 rounded-lg w-full`, imageStyle]}
-          resizeMethod="resize"
+          style={[tw`w-full h-full`, imageStyle]}
           resizeMode="cover"
         />
-        <BlurView
-          style={tw`absolute left-0 right-0 top-0 bottom-0`}
-          blurType="light"
-          blurAmount={10}
-          reducedTransparencyFallbackColor="white"
-        />
-        <View style={tw`absolute bottom-0 left-0 right-0 p-4`}>
-          <Text style={tw`text-white text-xl font-bold`}>PLCE Padel</Text>
-          <Text style={tw`text-white text-sm`}>
-            Anderkillah, Chattogram - 72km
-          </Text>
-        </View>
-        <View style={tw`absolute bottom-4 right-4`}>
-          <View
-            style={tw`h-11 w-11 rounded-full bg-black/50 items-center justify-center`}>
-            <Text style={tw`text-white text-lg font-bold`}>10</Text>
+
+        {/* Bottom Overlay */}
+        <View
+          style={tw`absolute bottom-0 w-full flex-row items-center gap-x-4 `}>
+          {/* Text and Blur Section */}
+          <View style={tw` h-[70px] px-2 w-[70%]  overflow-hidden`}>
+            <BlurView
+              style={tw`absolute inset-0 rounded-lg`}
+              blurType="dark"
+              blurAmount={10}
+              reducedTransparencyFallbackColor="white"
+            />
+            <View style={tw`py-2`}>
+              <ThemedText
+                variant="h2"
+                color="text-white"
+                style={tw`text-lg font-medium`}>
+                PLCE Padel
+              </ThemedText>
+              <ThemedText
+                variant="h4"
+                color="text-white"
+                style={tw`text-sm font-normal`}>
+                Anderkillah, Chattogram - 72km
+              </ThemedText>
+            </View>
+          </View>
+
+          {/* Star Icon Section */}
+          <View style={tw` items-end   w-[22%] `}>
+            <View
+              style={tw`h-[50px] w-[50px]  rounded-full items-center justify-center overflow-hidden`}>
+              <BlurView
+                style={tw`absolute inset-0 rounded-lg`}
+                blurType="dark"
+                blurAmount={10}
+                //   reducedTransparencyFallbackColor=""
+              />
+              <StarIcon size={30} color="#A9D101" />
+            </View>
           </View>
         </View>
       </View>
