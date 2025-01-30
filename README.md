@@ -1,4 +1,4 @@
-# Task for Contractual React Native Developer Role
+
 ## Technical Highlights
 *Frameworks and Libraries Used:*
 1. **React Native CLI**
